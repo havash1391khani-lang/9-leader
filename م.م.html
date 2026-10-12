@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مسئولین پایه نهم | شهید بهشتی ابهر</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&display=swap');
+
+*{box-sizing:border-box}
+body{margin:0;background:#06152f;color:#fff;font-family:Vazirmatn,Tahoma,sans-serif;padding:20px}
+.container{max-width:1100px;margin:auto}
+header{background:linear-gradient(130deg,#102d50,#087f8c);padding:30px 15px;text-align:center;border-radius:22px;margin-bottom:24px}
+header h1{font-size:clamp(24px,5vw,40px);margin:10px 0}
+header p{color:#d8f3f6;line-height:2}
+button,input,textarea{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:11px 16px;font-weight:700}
+.primary{background:#39d6c3;color:#05233a}
+.secondary{background:#203d5b;color:white}
+.danger{background:#7e2638;color:white}
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin:20px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:#10243f;border:1px solid #294867;border-radius:18px;padding:20px;text-align:center;overflow:hidden}
+.photo{width:130px;height:130px;border-radius:50%;object-fit:cover;background:#203d5b;border:3px solid #3bd4c1;margin:8px auto 18px;display:block}
+.role{color:#58e1d1;font-size:13px;margin-bottom:8px}
+.name{font-size:18px;font-weight:800;margin-bottom:10px;overflow-wrap:anywhere}
+.desc{font-size:12px;color:#b6cadd;line-height:2}
+footer{text-align:center;color:#a6bfd4;padding:25px 5px;font-size:12px;line-height:2}
+#admin{display:none;background:#0b1e36;border:1px solid #35516d;border-radius:18px;padding:20px;margin-top:25px}
+#admin h2{text-align:center}
+.admin-card{border:1px solid #2d4964;padding:16px;border-radius:14px;margin:15px 0;background:#10243f}
+label{display:block;font-size:13px;color:#c6d9e9;margin:12px 0 6px}
+input[type=text],input[type=password],textarea{width:100%;background:#07172b;border:1px solid #35516d;color:white;border-radius:9px;padding:11px}
+textarea{resize:vertical;min-height:70px}
+input[type=file]{width:100%;font-size:12px;color:#d5e5ef;margin-top:8px}
+.actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.note{color:#a7c2d8;font-size:12px;line-height:2}
+#login{display:none;max-width:420px;margin:25px auto;background:#10243f;border:1px solid #35516d;border-radius:18px;padding:22px}
+#login h2{text-align:center}
+.hidden{display:none!important}
+@media(max-width:480px){body{padding:10px}.card{padding:14px}.toolbar button{flex:1}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+<div>دبیرستان استعدادهای درخشان شهید بهشتی ابهر</div>
+<h1>مسئولین پایه نهم</h1>
+<p>معرفی اعضای تیم دانش‌آموزی پایه نهم</p>
+</header>
+
+<div class="toolbar">
+<button class="primary" onclick="showLogin()">⚙️ پنل مدیریت</button>
+</div>
+
+<div id="login">
+<h2>ورود به مدیریت</h2>
+<label>رمز عبور مدیر</label>
+<input id="password" type="password" placeholder="رمز عبور را وارد کنید">
+<div class="actions">
+<button class="primary" onclick="login()">ورود</button>
+<button class="secondary" onclick="hideLogin()">انصراف</button>
+</div>
+<p class="note">رمز اولیه: 1234 — پس از ورود آن را تغییر بده.</p>
+</div>
+
+<section id="admin">
+<h2>⚙️ پنل مدیریت مسئولین</h2>
+<p class="note">اطلاعات را ویرایش کن و برای هر شخص عکس انتخاب کن. برای انتشار تغییرات، «ذخیره» را بزن.</p>
+<div id="editor"></div>
+<div class="actions">
+<button class="primary" onclick="addPerson()">＋ افزودن مسئول</button>
+<button class="primary" onclick="saveAll()">ذخیره همه تغییرات</button>
+<button class="secondary" onclick="changePassword()">تغییر رمز مدیریت</button>
+<button class="secondary" onclick="logout()">خروج از پنل</button>
+</div>
+<p class="note">اطلاعات در همین مرورگر ذخیره می‌شود؛ این پنل به‌تنهایی تغییرات را برای دیگران در اینترنت منتشر نمی‌کند.</p>
+</section>
+
+<h2 style="text-align:center;margin:30px 0 20px">اعضای تیم ما</h2>
+<div class="grid" id="cards"></div>
+
+<footer>
+پایه نهم | دبیرستان استعدادهای درخشان شهید بهشتی ابهر<br>
+با همدلی، ایده‌های نو و همکاری، آینده‌ای بهتر می‌سازیم.
+</footer>
+</div>
+
+<script>
+const defaults = [
+{role:"معاون انضباطی",name:"علیرضا کبودخانی",desc:"نظم، مسئولیت‌پذیری و ایجاد محیطی منظم در مدرسه",photo:""},
+{role:"معاون فرهنگی",name:"هاوش خانی",desc:"برنامه‌های فرهنگی و تقویت روحیه مشارکت دانش‌آموزان",photo:""},
+{role:"معاون فناوری",name:"علیرضا رمضان جماعت",desc:"فناوری، خلاقیت دیجیتال و ابزارهای نوین",photo:""},
+{role:"شهردار مدرسه",name:"آرتین گارابی",desc:"پیگیری پیشنهادها و بهبود فضای دانش‌آموزی",photo:""},
+{role:"مدیر رسانه‌ای",name:"هاوش خانی",desc:"پوشش خبری و اطلاع‌رسانی فعالیت‌های مدرسه",photo:""}
+];
+
+let people = loadPeople();
+let passwordHash = localStorage.getItem("grade9_admin_password") || "1234";
+
+function loadPeople(){
+ try{
+  const data=JSON.parse(localStorage.getItem("grade9_people"));
+  return Array.isArray(data)?data:defaults.map(x=>({...x}));
+ }catch(e){return defaults.map(x=>({...x}));}
+}
+
+function savePeople(){
+ try{
+  localStorage.setItem("grade9_people",JSON.stringify(people));
+  return true;
+ }catch(e){
+  alert("فضای ذخیره‌سازی پر شده است. از عکس‌های کم‌حجم‌تر استفاده کن.");
+  return false;
+ }
+}
+
+function escapeHTML(value){
+ return String(value??"").replace(/[&<>"']/g,c=>({
+ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+ }[c]));
+}
+
+function renderCards(){
+ document.getElementById("cards").innerHTML=people.map(p=>`
+ <article class="card">
+ ${p.photo
+ ? `<img class="photo" src="${p.photo}" alt="عکس ${escapeHTML(p.name)}">`
+ : `<div class="photo" style="display:flex;align-items:center;justify-content:center;font-size:42px">📷</div>`}
+ <div class="role">${escapeHTML(p.role)}</div>
+ <div class="name">${escapeHTML(p.name)}</div>
+ <div class="desc">${escapeHTML(p.desc)}</div>
+ </article>`).join("");
+}
+
+function renderEditor(){
+ document.getElementById("editor").innerHTML=people.map((p,i)=>`
+ <div class="admin-card">
+ <strong>مسئول شماره ${i+1}</strong>
+ <label>نام و نام خانوادگی</label>
+ <input type="text" data-i="${i}" data-field="name" value="${escapeHTML(p.name)}">
+ <label>سمت</label>
+ <input type="text" data-i="${i}" data-field="role" value="${escapeHTML(p.role)}">
+ <label>توضیحات</label>
+ <textarea data-i="${i}" data-field="desc">${escapeHTML(p.desc)}</textarea>
+ <label>انتخاب عکس</label>
+ <input type="file" accept="image/*" onchange="uploadPhoto(event,${i})">
+ ${p.photo?`<button class="secondary" onclick="removePhoto(${i})">حذف عکس</button>`:""}
+ <button class="danger" onclick="removePerson(${i})">حذف مسئول</button>
+ </div>`).join("");
+}
+
+function uploadPhoto(event,i){
+ const file=event.target.files[0];
+ if(!file)return;
+ if(!file.type.startsWith("image/")){alert("لطفاً یک فایل تصویری انتخاب کن.");return;}
+ if(file.size>2*1024*1024){alert("حجم عکس باید کمتر از ۲ مگابایت باشد.");return;}
+ const reader=new FileReader();
+ reader.onload=()=>{
+  people[i].photo=reader.result;
+  if(savePeople()){renderAll();}
+ };
+ reader.readAsDataURL(file);
+}
+
+function removePhoto(i){
+ people[i].photo="";
+ savePeople();renderAll();
+}
+
+function removePerson(i){
+ if(!confirm("این مسئول حذف شود؟"))return;
+ people.splice(i,1);
+ savePeople();renderAll();
+}
+
+function addPerson(){
+ people.push({role:"سمت جدید",name:"نام مسئول",desc:"توضیحات مسئول",photo:""});
+ renderAll();
+}
+
+function saveAll(){
+ document.querySelectorAll("#editor [data-field]").forEach(el=>{
+  people[Number(el.dataset.i)][el.dataset.field]=el.value;
+ });
+ if(savePeople()){renderAll();alert("تغییرات ذخیره شد.");}
+}
+
+function renderAll(){renderCards();renderEditor();}
+
+function showLogin(){
+ document.getElementById("login").style.display="block";
+ document.getElementById("password").focus();
+}
+function hideLogin(){document.getElementById("login").style.display="none";}
+
+function login(){
+ if(document.getElementById("password").value===passwordHash){
+  document.getElementById("admin").style.display="block";
+  hideLogin();renderEditor();
+ }else alert("رمز عبور اشتباه است.");
+ document.getElementById("password").value="";
+}
+function logout(){document.getElementById("admin").style.display="none";}
+
+function changePassword(){
+ const old=prompt("رمز فعلی:");
+ if(old===null)return;
+ if(old!==passwordHash){alert("رمز فعلی اشتباه است.");return;}
+ const next=prompt("رمز جدید (حداقل ۴ نویسه):");
+ if(!next||next.length<4){alert("رمز جدید باید حداقل ۴ نویسه داشته باشد.");return;}
+ passwordHash=next;
+ localStorage.setItem("grade9_admin_password",next);
+ alert("رمز تغییر کرد.");
+}
+
+document.getElementById("password").addEventListener("keydown",e=>{
+ if(e.key==="Enter")login();
+});
+
+renderAll();
+</script>
+</body>
+</html>
