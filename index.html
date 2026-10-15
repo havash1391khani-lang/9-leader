@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#06152f">
+<title>مسئولین پایه نهم | دبیرستان شهید بهشتی ابهر</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Tahoma, Arial, sans-serif;
+    background: #06152f;
+    color: #fff;
+    line-height: 1.9;
+}
+
+header {
+    text-align: center;
+    padding: 45px 15px 35px;
+    background: linear-gradient(135deg, #06152f, #103c60);
+    border-bottom: 3px solid #12b8a9;
+}
+
+.badge {
+    display: inline-block;
+    background: #12b8a9;
+    color: #06152f;
+    padding: 5px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+h1 {
+    font-size: clamp(24px, 5vw, 38px);
+    margin: 18px 0 5px;
+}
+
+header p {
+    color: #c7d8e9;
+    margin: 5px;
+}
+
+.container {
+    max-width: 1050px;
+    margin: auto;
+    padding: 25px 15px;
+}
+
+.section-title {
+    text-align: center;
+    margin: 15px 0 25px;
+}
+
+.section-title h2 {
+    color: #53e2d0;
+    font-size: 23px;
+}
+
+.section-title p {
+    color: #b6c8dc;
+    font-size: 14px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: linear-gradient(145deg, #102642, #0b1c34);
+    border: 1px solid #244563;
+    border-radius: 20px;
+    padding: 25px 18px;
+    text-align: center;
+    transition: .25s;
+    box-shadow: 0 8px 25px #0002;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #12b8a9;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    border: 3px solid #12b8a9;
+    background: #173858;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #53e2d0;
+    font-size: 30px;
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.role {
+    color: #53e2d0;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.name {
+    font-size: 19px;
+    font-weight: bold;
+    margin: 5px 0;
+}
+
+.school {
+    text-align: center;
+    color: #b6c8dc;
+    font-size: 13px;
+    margin-top: 35px;
+}
+
+footer {
+    text-align: center;
+    margin-top: 35px;
+    padding: 25px 12px;
+    background: #030d1e;
+    border-top: 1px solid #193552;
+    color: #c6d5e6;
+    font-size: 13px;
+}
+
+footer strong {
+    color: #53e2d0;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.admin-button {
+    display: block;
+    margin: 20px auto 0;
+    border: 1px solid #12b8a9;
+    background: transparent;
+    color: #53e2d0;
+    padding: 9px 20px;
+    border-radius: 10px;
+}
+
+.admin-button:hover {
+    background: #12b8a9;
+    color: #06152f;
+}
+
+#adminPanel {
+    display: none;
+    max-width: 700px;
+    margin: 25px auto;
+    padding: 20px;
+    background: #102642;
+    border: 1px solid #12b8a9;
+    border-radius: 16px;
+}
+
+input {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #31506e;
+    background: #06152f;
+    color: white;
+    font-family: inherit;
+}
+
+.save-button {
+    background: #12b8a9;
+    color: #06152f;
+    border: none;
+    border-radius: 8px;
+    padding: 11px 20px;
+    font-weight: bold;
+}
+
+.notice {
+    color: #ffd783;
+    font-size: 12px;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 12px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <span class="badge">پایه نهم | سال تحصیلی ۱۴۰۵–۱۴۰۶</span>
+
+    <h1>معرفی مسئولین پایه نهم</h1>
+
+    <p>دبیرستان استعدادهای درخشان شهید بهشتی ابهر</p>
+    <p>مسئولیت‌پذیری، همدلی و پیشرفت</p>
+</header>
+
+<main class="container">
+
+    <div class="section-title">
+        <h2>با مسئولین پایه نهم آشنا شوید</h2>
+        <p>تلاش برای ساختن محیطی بهتر، منظم‌تر و پویاتر</p>
+    </div>
+
+    <section class="cards" id="cards">
+
+        <article class="card">
+            <div class="avatar">ع</div>
+            <div class="role">معاون انضباطی</div>
+            <div class="name">علیرضا کبودخانی</div>
+        </article>
+
+        <article class="card">
+            <div class="avatar">ه</div>
+            <div class="role">معاون فرهنگی</div>
+            <div class="name">هاوش خانی</div>
+        </article>
+
+        <article class="card">
+            <div class="avatar">ع</div>
+            <div class="role">معاون فناوری</div>
+            <div class="name">علیرضا رمضان جماعت</div>
+        </article>
+
+        <article class="card">
+            <div class="avatar">آ</div>
+            <div class="role">شهردار پایه نهم</div>
+            <div class="name">آرتین گارابی</div>
+        </article>
+
+        <article class="card">
+            <div class="avatar">ه</div>
+            <div class="role">مدیر رسانه‌ای</div>
+            <div class="name">هاوش خانی</div>
+        </article>
+
+    </section>
+
+    <p class="school">
+        پایه نهم؛ یک تیم، یک هدف، آینده‌ای بهتر
+    </p>
+
+    <button class="admin-button" onclick="openAdmin()">
+        ورود به پنل مدیریت
+    </button>
+
+    <section id="adminPanel">
+        <h2>پنل مدیریت سایت</h2>
+        <p>برای تغییر اطلاعات، رمز عبور را وارد کنید.</p>
+
+        <input id="password" type="password"
+               placeholder="رمز عبور مدیریت">
+
+        <button class="save-button" onclick="login()">
+            ورود
+        </button>
+
+        <div id="editor" style="display:none">
+
+            <h3>ویرایش مسئولین</h3>
+
+            <p class="notice">
+                این نسخه اطلاعات را در مرورگر همین دستگاه ذخیره می‌کند.
+                برای نمایش تغییرات به همه بازدیدکنندگان، به پایگاه داده
+                و پنل مدیریت متصل به سرور نیاز است.
+            </p>
+
+            <div id="fields"></div>
+
+            <button class="save-button" onclick="saveData()">
+                ذخیره تغییرات
+            </button>
+
+        </div>
+    </section>
+
+</main>
+
+<footer>
+    <div>دبیرستان استعدادهای درخشان شهید بهشتی ابهر</div>
+    <div>مدیریت رسانه‌ای پایه نهم؛
+        <strong>هاوش خانی</strong>
+    </div>
+</footer>
+
+<script>
+const defaultPeople = [
+    {role:"معاون انضباطی", name:"علیرضا کبودخانی"},
+    {role:"معاون فرهنگی", name:"هاوش خانی"},
+    {role:"معاون فناوری", name:"علیرضا رمضان جماعت"},
+    {role:"شهردار پایه نهم", name:"آرتین گارابی"},
+    {role:"مدیر رسانه‌ای", name:"هاوش خانی"}
+];
+
+let people = defaultPeople.map(person => ({...person}));
+
+function renderCards() {
+    const cards = document.getElementById("cards");
+
+    cards.innerHTML = people.map(person => `
+        <article class="card">
+            <div class="avatar">
+                ${escapeHTML(person.name.trim().charAt(0) || "؟")}
+            </div>
+            <div class="role">${escapeHTML(person.role)}</div>
+            <div class="name">${escapeHTML(person.name)}</div>
+        </article>
+    `).join("");
+}
+
+function escapeHTML(value) {
+    return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;"
+    })[char]);
+}
+
+function openAdmin() {
+    const panel = document.getElementById("adminPanel");
+
+    panel.style.display =
+        panel.style.display === "block" ? "none" : "block";
+
+    panel.scrollIntoView({behavior:"smooth", block:"start"});
+}
+
+function login() {
+    if (document.getElementById("password").value !== "1390") {
+        alert("رمز عبور اشتباه است!");
+        return;
+    }
+
+    document.getElementById("editor").style.display = "block";
+
+    document.getElementById("fields").innerHTML = people.map((p, i) => `
+        <label>مسئول شماره ${i + 1}</label>
+        <input id="role${i}" value="${escapeHTML(p.role)}"
+               placeholder="سمت">
+        <input id="name${i}" value="${escapeHTML(p.name)}"
+               placeholder="نام و نام خانوادگی">
+    `).join("");
+}
+
+function saveData() {
+    people = people.map((p, i) => ({
+        role: document.getElementById("role" + i).value.trim(),
+        name: document.getElementById("name" + i).value.trim()
+    }));
+
+    renderCards();
+
+    try {
+        localStorage.setItem("grade9People", JSON.stringify(people));
+    } catch (error) {
+        alert("ذخیره اطلاعات در مرورگر امکان‌پذیر نشد.");
+        return;
+    }
+
+    alert("اطلاعات در همین مرورگر ذخیره شد.");
+}
+
+try {
+    const saved = localStorage.getItem("grade9People");
+
+    if (saved) {
+        const parsed = JSON.parse(saved);
+
+        if (Array.isArray(parsed) && parsed.length === 5 &&
+            parsed.every(p =>
+                p && typeof p.role === "string" &&
+                typeof p.name === "string"
+            )) {
+            people = parsed;
+        }
+    }
+} catch (error) {
+    people = defaultPeople.map(person => ({...person}));
+}
+
+renderCards();
+</script>
+
+</body>
+</html>
